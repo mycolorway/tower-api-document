@@ -41,7 +41,7 @@ Parameters
 `client_secret`|`string`| 由 Pro 用户在应用中心中创建
 `username`|`string`| 用户账号
 `password`|`string`| 用户密码
-`grant_type`|`string`| 此处填写为`grant_type`
+`grant_type`|`string`| 此处填写为`password`
 `captcha`|`string`| *可选项*若开启两步验证，此处填写验证码。使用这个 API 完成第一次请求后，会自动通过微信发送验证码，第二次请求时候，将验证码填入此参数即可
 
 
