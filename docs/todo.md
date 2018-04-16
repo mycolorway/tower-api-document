@@ -1,106 +1,833 @@
-# Todo API
+# 任务
 
-## Get todolist all todos
+## 获取清单中所有任务
 
 ```
 GET /todolists/{todolist_id}/todos
 ```
->all active uncompleted todos
+>仅获得未完成的任务，且没有被归档的
 
-```
+```json
 Status: 200 OK
+
+{
+    "data": [
+        {
+            "id": "46d952895c10440",
+            "type": "todos",
+            "attributes": {
+                "content": "任务名称",
+                "desc": "任务描述",
+                "is_active": true,
+                "is_completed": false,
+                "due_at": null,
+                "closed_at": null
+            },
+            "relationships": {
+                "creator": {
+                    "data": {
+                        "id": "043bd9be9c10",
+                        "type": "members"
+                    }
+                },
+                "assignee": {
+                    "data": null
+                },
+                "closer": {
+                    "data": null
+                }
+            }
+        }
+    ],
+    "included": [
+        {
+            "id": "043bd9be9c104f0a",
+            "type": "members",
+            "attributes": {
+                "nickname": "nickname",
+                "is_active": true,
+                "gavatar": "https://avatar.tower.im/avatar",
+                "role": "owner",
+                "comment": "123123123123121",
+                "phone": "123",
+                "created_at": "2017-07-12T10:47:29.000+08:00",
+                "updated_at": "2018-04-16T10:16:34.000+08:00"
+            },
+            "relationships": {
+                "team": {
+                    "data": {
+                        "id": "82196e7031a24ac",
+                        "type": "teams"
+                    }
+                },
+                "groups": {
+                    "data": [
+                        {
+                            "id": "ab855eec4b6f49",
+                            "type": "subgroups"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "82196e7031a24",
+            "type": "teams",
+            "attributes": {
+                "name": "name",
+                "created_at": "2017-07-12T10:47:29.000+08:00",
+                "updated_at": "2018-04-16T10:16:34.000+08:00"
+            }
+        },
+        {
+            "id": "ab855eec4b6f49bab8a7589408dcc29d",
+            "type": "subgroups",
+            "attributes": {
+                "name": "groupname"
+            }
+        }
+    ],
+    "jsonapi": {
+        "version": "1.0"
+    }
+}
 ```
 
-## Create Todo
+## 创建任务
 
 ```
 POST /todolists/{todolist_id}/todos
 ```
 
-Parameters
+参数
 
-Name|Type|Description|
+名称|类型|描述|
 --|--|--|
-`{ todo: { content: 'Todo', desc: 'Todo Desc', assignee_id: '', due_at: '2018-01-09' } }`|`json`| todo info
+`{ "todo": { "content": "Todo", "desc": "Todo Desc", "assignee_id": "", "due_at": "2018-01-09" } }`|`json`| 任务信息，`assignee_id` 和 `due_at` 可设置为空
 
-```
+```json
 Status: 200 OK
+
+{
+    "data": {
+        "id": "2d5de72adb4e414f8f299753f4f1a87a",
+        "type": "todos",
+        "attributes": {
+            "content": "Todo",
+            "desc": "Todo Desc",
+            "is_active": true,
+            "is_completed": false,
+            "due_at": null,
+            "closed_at": null,
+            "created_at": "2018-04-16T16:02:41.000+08:00",
+            "updated_at": "2018-04-16T16:02:41.000+08:00"
+        },
+        "relationships": {
+            "project": {
+                "data": {
+                    "id": "0a81690ff28d45cb94e43ebf431eedff",
+                    "type": "projects"
+                }
+            },
+            "todolist": {
+                "data": {
+                    "id": "cf0b8fcef47d470b906859c861194f6f",
+                    "type": "todolists"
+                }
+            },
+            "creator": {
+                "data": {
+                    "id": "b79acb8a6816467c9a926a3d053ac5f0",
+                    "type": "members"
+                }
+            },
+            "assignee": {
+                "data": null
+            },
+            "closer": {
+                "data": null
+            },
+            "todos_check_items": {
+                "data": []
+            },
+            "comments": {
+                "data": []
+            }
+        }
+    },
+    "included": [
+        {
+            "id": "0a81690ff28d45cb94e43ebf431eedff",
+            "type": "projects",
+            "attributes": {
+                "name": "艾泽拉斯大事件",
+                "is_archived": false
+            }
+        },
+        {
+            "id": "cf0b8fcef47d470b906859c861194f6f",
+            "type": "todolists",
+            "attributes": {
+                "name": "部落",
+                "is_active": true,
+                "is_archived": false,
+                "is_default": false
+            }
+        },
+        {
+            "id": "b79acb8a6816467c9a926a3d053ac5f0",
+            "type": "members",
+            "attributes": {
+                "nickname": "nickname",
+                "is_active": true,
+                "gavatar": "https://avatar.tower.im/",
+                "role": "admin",
+                "comment": "beizhu",
+                "phone": "133",
+                "created_at": "2017-09-04T15:23:25.000+08:00",
+                "updated_at": "2018-04-16T15:57:13.000+08:00"
+            },
+            "relationships": {
+                "team": {
+                    "data": {
+                        "id": "82196e7031a24a",
+                        "type": "teams"
+                    }
+                },
+                "groups": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "id": "82196e7031a24ac980",
+            "type": "teams",
+            "attributes": {
+                "name": "Me",
+                "created_at": "2017-07-12T10:47:29.000+08:00",
+                "updated_at": "2018-04-16T10:16:34.000+08:00"
+            }
+        }
+    ],
+    "jsonapi": {
+        "version": "1.0"
+    }
+}
 ```
 
-## Get Todo
+## 获取任务信息
 
 ```
 GET /todos/{todo_id}
 ```
 
-```
+```json
 Status: 200 OK
+
+{
+    "data": {
+        "id": "2388246f04414e1aa286cd1cdb60a5b3",
+        "type": "todos",
+        "attributes": {
+            "content": "任务名称",
+            "desc": "<p>任务描述</p>",
+            "is_active": true,
+            "is_completed": false,
+            "due_at": null,
+            "closed_at": null,
+            "created_at": "2018-04-16T16:07:54.000+08:00",
+            "updated_at": "2018-04-16T16:08:15.000+08:00"
+        },
+        "relationships": {
+            "project": {
+                "data": {
+                    "id": "5448bef3f013403db51b82d5ba3c473e",
+                    "type": "projects"
+                }
+            },
+            "todolist": {
+                "data": {
+                    "id": "462c6ca5442c4d6394b8bed46480e195",
+                    "type": "todolists"
+                }
+            },
+            "creator": {
+                "data": {
+                    "id": "8ead8fc12a804eb198c2196abbf1a18e",
+                    "type": "members"
+                }
+            },
+            "assignee": {
+                "data": null
+            },
+            "closer": {
+                "data": null
+            },
+            "todos_check_items": {
+                "data": [
+                    {
+                        "id": "66c2977494fd4dadb3ec8cd3248744bf",
+                        "type": "todos_check_items"
+                    }
+                ]
+            },
+            "comments": {
+                "data": []
+            }
+        }
+    },
+    "included": [
+        {
+            "id": "5448bef3f013403db51b82d5ba3c473e",
+            "type": "projects",
+            "attributes": {
+                "name": "Project Name",
+                "is_archived": false
+            }
+        },
+        {
+            "id": "462c6ca5442c4d6394b8bed46480e195",
+            "type": "todolists",
+            "attributes": {
+                "name": "清单名称",
+                "is_active": true,
+                "is_archived": false,
+                "is_default": false
+            }
+        },
+        {
+            "id": "8ead8fc12a804eb198c2196abbf1a18e",
+            "type": "members",
+            "attributes": {
+                "nickname": "GaoYu",
+                "is_active": true,
+                "gavatar": "https://avatar.tower.im/",
+                "role": "owner",
+                "comment": null,
+                "phone": null,
+                "created_at": "2018-04-16T16:07:35.000+08:00",
+                "updated_at": "2018-04-16T16:07:35.000+08:00"
+            },
+            "relationships": {
+                "team": {
+                    "data": {
+                        "id": "3fbe491eef5c4fbeaaabc1716b7a1f00",
+                        "type": "teams"
+                    }
+                },
+                "groups": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "id": "3fbe491eef5c4fbeaaabc1716b7a1f00",
+            "type": "teams",
+            "attributes": {
+                "name": "API Team",
+                "created_at": "2018-04-16T16:07:34.000+08:00",
+                "updated_at": "2018-04-16T16:07:35.000+08:00"
+            }
+        },
+        {
+            "id": "66c2977494fd4dadb3ec8cd3248744bf",
+            "type": "todos_check_items",
+            "attributes": {
+                "name": "检查项",
+                "is_completed": false,
+                "due_at": null,
+                "completed_at": null
+            },
+            "relationships": {
+                "creator": {
+                    "data": {
+                        "id": "8ead8fc12a804eb198c2196abbf1a18e",
+                        "type": "members"
+                    }
+                },
+                "assignee": {
+                    "data": null
+                },
+                "closer": {
+                    "data": null
+                }
+            }
+        }
+    ],
+    "jsonapi": {
+        "version": "1.0"
+    }
+}
 ```
 
-## Update Todo
+## 更新任务信息
 
 ```
 PATCH /todos/{todo_id}
 ```
 
-Parameters
+参数
 
-Name|Type|Description|
+名称|类型|描述|
 --|--|--|
-`{ todo: { content: 'Todo', desc: 'Todo Desc', assignee_id: '', due_at: '2018-01-09' } }`|`json`| todo info
+`{ "todo": { "content": "Todo", "desc": "Todo Desc", "assignee_id": "", "due_at": "2018-01-09" } }`|`json`| 任务信息，`assignee_id` 和 `due_at` 可设置为空
 
-> dueAt and assignee is optional.
 
-```
+```json
 Status: 200 OK
+
+{
+    "data": {
+        "id": "2388246f04414e1aa286cd1cdb60a5b3",
+        "type": "todos",
+        "attributes": {
+            "content": "任务名称",
+            "desc": "<p>任务描述</p>",
+            "is_active": true,
+            "is_completed": false,
+            "due_at": null,
+            "closed_at": null,
+            "created_at": "2018-04-16T16:07:54.000+08:00",
+            "updated_at": "2018-04-16T16:08:15.000+08:00"
+        },
+        "relationships": {
+            "project": {
+                "data": {
+                    "id": "5448bef3f013403db51b82d5ba3c473e",
+                    "type": "projects"
+                }
+            },
+            "todolist": {
+                "data": {
+                    "id": "462c6ca5442c4d6394b8bed46480e195",
+                    "type": "todolists"
+                }
+            },
+            "creator": {
+                "data": {
+                    "id": "8ead8fc12a804eb198c2196abbf1a18e",
+                    "type": "members"
+                }
+            },
+            "assignee": {
+                "data": null
+            },
+            "closer": {
+                "data": null
+            },
+            "todos_check_items": {
+                "data": [
+                    {
+                        "id": "66c2977494fd4dadb3ec8cd3248744bf",
+                        "type": "todos_check_items"
+                    }
+                ]
+            },
+            "comments": {
+                "data": []
+            }
+        }
+    },
+    "included": [
+        {
+            "id": "5448bef3f013403db51b82d5ba3c473e",
+            "type": "projects",
+            "attributes": {
+                "name": "Project Name",
+                "is_archived": false
+            }
+        },
+        {
+            "id": "462c6ca5442c4d6394b8bed46480e195",
+            "type": "todolists",
+            "attributes": {
+                "name": "清单名称",
+                "is_active": true,
+                "is_archived": false,
+                "is_default": false
+            }
+        },
+        {
+            "id": "8ead8fc12a804eb198c2196abbf1a18e",
+            "type": "members",
+            "attributes": {
+                "nickname": "GaoYu",
+                "is_active": true,
+                "gavatar": "https://avatar.tower.im/",
+                "role": "owner",
+                "comment": null,
+                "phone": null,
+                "created_at": "2018-04-16T16:07:35.000+08:00",
+                "updated_at": "2018-04-16T16:07:35.000+08:00"
+            },
+            "relationships": {
+                "team": {
+                    "data": {
+                        "id": "3fbe491eef5c4fbeaaabc1716b7a1f00",
+                        "type": "teams"
+                    }
+                },
+                "groups": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "id": "3fbe491eef5c4fbeaaabc1716b7a1f00",
+            "type": "teams",
+            "attributes": {
+                "name": "API Team",
+                "created_at": "2018-04-16T16:07:34.000+08:00",
+                "updated_at": "2018-04-16T16:07:35.000+08:00"
+            }
+        },
+        {
+            "id": "66c2977494fd4dadb3ec8cd3248744bf",
+            "type": "todos_check_items",
+            "attributes": {
+                "name": "检查项",
+                "is_completed": false,
+                "due_at": null,
+                "completed_at": null
+            },
+            "relationships": {
+                "creator": {
+                    "data": {
+                        "id": "8ead8fc12a804eb198c2196abbf1a18e",
+                        "type": "members"
+                    }
+                },
+                "assignee": {
+                    "data": null
+                },
+                "closer": {
+                    "data": null
+                }
+            }
+        }
+    ],
+    "jsonapi": {
+        "version": "1.0"
+    }
+}
 ```
 
-## Delete Todo
+## 删除任务
 
 ```
 DELETE /todos/{todo_id}
 ```
 
 ```
-Status: 200 OK
+Status: 204 OK
 ```
 
-## Complete todo
+## 完成任务
 
 ```
 POST /todos/{todo_id}/completion
 ```
 
-```
+```json
 Status: 200 OK
+
+{
+    "data": {
+        "id": "2388246f04414e1aa286cd1cdb60a5b3",
+        "type": "todos",
+        "attributes": {
+            "content": "任务名称",
+            "desc": "<p>任务描述</p>",
+            "is_active": true,
+            "is_completed": false,
+            "due_at": null,
+            "closed_at": null,
+            "created_at": "2018-04-16T16:07:54.000+08:00",
+            "updated_at": "2018-04-16T16:08:15.000+08:00"
+        },
+        "relationships": {
+            "project": {
+                "data": {
+                    "id": "5448bef3f013403db51b82d5ba3c473e",
+                    "type": "projects"
+                }
+            },
+            "todolist": {
+                "data": {
+                    "id": "462c6ca5442c4d6394b8bed46480e195",
+                    "type": "todolists"
+                }
+            },
+            "creator": {
+                "data": {
+                    "id": "8ead8fc12a804eb198c2196abbf1a18e",
+                    "type": "members"
+                }
+            },
+            "assignee": {
+                "data": null
+            },
+            "closer": {
+                "data": null
+            },
+            "todos_check_items": {
+                "data": [
+                    {
+                        "id": "66c2977494fd4dadb3ec8cd3248744bf",
+                        "type": "todos_check_items"
+                    }
+                ]
+            },
+            "comments": {
+                "data": []
+            }
+        }
+    },
+    "included": [
+        {
+            "id": "5448bef3f013403db51b82d5ba3c473e",
+            "type": "projects",
+            "attributes": {
+                "name": "Project Name",
+                "is_archived": false
+            }
+        },
+        {
+            "id": "462c6ca5442c4d6394b8bed46480e195",
+            "type": "todolists",
+            "attributes": {
+                "name": "清单名称",
+                "is_active": true,
+                "is_archived": false,
+                "is_default": false
+            }
+        },
+        {
+            "id": "8ead8fc12a804eb198c2196abbf1a18e",
+            "type": "members",
+            "attributes": {
+                "nickname": "GaoYu",
+                "is_active": true,
+                "gavatar": "https://avatar.tower.im/",
+                "role": "owner",
+                "comment": null,
+                "phone": null,
+                "created_at": "2018-04-16T16:07:35.000+08:00",
+                "updated_at": "2018-04-16T16:07:35.000+08:00"
+            },
+            "relationships": {
+                "team": {
+                    "data": {
+                        "id": "3fbe491eef5c4fbeaaabc1716b7a1f00",
+                        "type": "teams"
+                    }
+                },
+                "groups": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "id": "3fbe491eef5c4fbeaaabc1716b7a1f00",
+            "type": "teams",
+            "attributes": {
+                "name": "API Team",
+                "created_at": "2018-04-16T16:07:34.000+08:00",
+                "updated_at": "2018-04-16T16:07:35.000+08:00"
+            }
+        },
+        {
+            "id": "66c2977494fd4dadb3ec8cd3248744bf",
+            "type": "todos_check_items",
+            "attributes": {
+                "name": "检查项",
+                "is_completed": false,
+                "due_at": null,
+                "completed_at": null
+            },
+            "relationships": {
+                "creator": {
+                    "data": {
+                        "id": "8ead8fc12a804eb198c2196abbf1a18e",
+                        "type": "members"
+                    }
+                },
+                "assignee": {
+                    "data": null
+                },
+                "closer": {
+                    "data": null
+                }
+            }
+        }
+    ],
+    "jsonapi": {
+        "version": "1.0"
+    }
+}
 ```
 
-## Open todo
+## 打开任务
 
 ```
 DELETE /todos/{todo_id}/completion
 ```
 
-```
+```json
 Status: 200 OK
+
+{
+    "data": {
+        "id": "2388246f04414e1aa286cd1cdb60a5b3",
+        "type": "todos",
+        "attributes": {
+            "content": "任务名称",
+            "desc": "<p>任务描述</p>",
+            "is_active": true,
+            "is_completed": false,
+            "due_at": null,
+            "closed_at": null,
+            "created_at": "2018-04-16T16:07:54.000+08:00",
+            "updated_at": "2018-04-16T16:08:15.000+08:00"
+        },
+        "relationships": {
+            "project": {
+                "data": {
+                    "id": "5448bef3f013403db51b82d5ba3c473e",
+                    "type": "projects"
+                }
+            },
+            "todolist": {
+                "data": {
+                    "id": "462c6ca5442c4d6394b8bed46480e195",
+                    "type": "todolists"
+                }
+            },
+            "creator": {
+                "data": {
+                    "id": "8ead8fc12a804eb198c2196abbf1a18e",
+                    "type": "members"
+                }
+            },
+            "assignee": {
+                "data": null
+            },
+            "closer": {
+                "data": null
+            },
+            "todos_check_items": {
+                "data": [
+                    {
+                        "id": "66c2977494fd4dadb3ec8cd3248744bf",
+                        "type": "todos_check_items"
+                    }
+                ]
+            },
+            "comments": {
+                "data": []
+            }
+        }
+    },
+    "included": [
+        {
+            "id": "5448bef3f013403db51b82d5ba3c473e",
+            "type": "projects",
+            "attributes": {
+                "name": "Project Name",
+                "is_archived": false
+            }
+        },
+        {
+            "id": "462c6ca5442c4d6394b8bed46480e195",
+            "type": "todolists",
+            "attributes": {
+                "name": "清单名称",
+                "is_active": true,
+                "is_archived": false,
+                "is_default": false
+            }
+        },
+        {
+            "id": "8ead8fc12a804eb198c2196abbf1a18e",
+            "type": "members",
+            "attributes": {
+                "nickname": "GaoYu",
+                "is_active": true,
+                "gavatar": "https://avatar.tower.im/",
+                "role": "owner",
+                "comment": null,
+                "phone": null,
+                "created_at": "2018-04-16T16:07:35.000+08:00",
+                "updated_at": "2018-04-16T16:07:35.000+08:00"
+            },
+            "relationships": {
+                "team": {
+                    "data": {
+                        "id": "3fbe491eef5c4fbeaaabc1716b7a1f00",
+                        "type": "teams"
+                    }
+                },
+                "groups": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "id": "3fbe491eef5c4fbeaaabc1716b7a1f00",
+            "type": "teams",
+            "attributes": {
+                "name": "API Team",
+                "created_at": "2018-04-16T16:07:34.000+08:00",
+                "updated_at": "2018-04-16T16:07:35.000+08:00"
+            }
+        },
+        {
+            "id": "66c2977494fd4dadb3ec8cd3248744bf",
+            "type": "todos_check_items",
+            "attributes": {
+                "name": "检查项",
+                "is_completed": false,
+                "due_at": null,
+                "completed_at": null
+            },
+            "relationships": {
+                "creator": {
+                    "data": {
+                        "id": "8ead8fc12a804eb198c2196abbf1a18e",
+                        "type": "members"
+                    }
+                },
+                "assignee": {
+                    "data": null
+                },
+                "closer": {
+                    "data": null
+                }
+            }
+        }
+    ],
+    "jsonapi": {
+        "version": "1.0"
+    }
+}
 ```
 
-## Comment
+## 发布评论
 
 ```
 POST /todos/{id}/comments
 ```
 
-Parameters
+参数
 
-Name|Type|Description|
+名称|类型|描述|
 --|--|--|
 `id`|`string`|todo id
 `{"todos_comment": {"content": "comment content"}}`|`json`|comment
 
 > 评论中 @ 他人，需要将评论中的`@Tower`转化成`<a href=\"/members/{member_id}\" data-mention=\"true\">@Tower</a>`
 
-```
+```json
 Status: 200 OK
 
 {
@@ -146,7 +873,7 @@ Status: 200 OK
             "id": "82196e7031a24a",
             "type": "teams",
             "attributes": {
-                "name": "Me",
+                "name": "API Team",
                 "created_at": "2017-07-12T10:47:29.000+08:00",
                 "updated_at": "2018-03-27T09:57:54.000+08:00"
             }
@@ -158,23 +885,158 @@ Status: 200 OK
 }
 ```
 
-## Assigned todo
+## 指派任务负责人
 
 ```
-PATCH	/todos/{todo_id}/assignment
+PATCH /todos/{todo_id}/assignment
 ```
 
-Parameters
+参数
 
-Name|Type|Description|
+名称|类型|描述|
 --|--|--|
-`{ todos_assignment: { assignee_id: 'member id' } }`|`json`| member id
+`{ "todos_assignment": { "assignee_id": "member_id" } }`|`json`| member id
 
 ```
 Status: 200 OK
+
+{
+    "data": {
+        "id": "2388246f04414e1aa286cd1cdb60a5b3",
+        "type": "todos",
+        "attributes": {
+            "content": "任务名称",
+            "desc": "<p>任务描述</p>",
+            "is_active": true,
+            "is_completed": false,
+            "due_at": null,
+            "closed_at": null,
+            "created_at": "2018-04-16T16:07:54.000+08:00",
+            "updated_at": "2018-04-16T16:08:15.000+08:00"
+        },
+        "relationships": {
+            "project": {
+                "data": {
+                    "id": "5448bef3f013403db51b82d5ba3c473e",
+                    "type": "projects"
+                }
+            },
+            "todolist": {
+                "data": {
+                    "id": "462c6ca5442c4d6394b8bed46480e195",
+                    "type": "todolists"
+                }
+            },
+            "creator": {
+                "data": {
+                    "id": "8ead8fc12a804eb198c2196abbf1a18e",
+                    "type": "members"
+                }
+            },
+            "assignee": {
+                "data": null
+            },
+            "closer": {
+                "data": null
+            },
+            "todos_check_items": {
+                "data": [
+                    {
+                        "id": "66c2977494fd4dadb3ec8cd3248744bf",
+                        "type": "todos_check_items"
+                    }
+                ]
+            },
+            "comments": {
+                "data": []
+            }
+        }
+    },
+    "included": [
+        {
+            "id": "5448bef3f013403db51b82d5ba3c473e",
+            "type": "projects",
+            "attributes": {
+                "name": "Project Name",
+                "is_archived": false
+            }
+        },
+        {
+            "id": "462c6ca5442c4d6394b8bed46480e195",
+            "type": "todolists",
+            "attributes": {
+                "name": "清单名称",
+                "is_active": true,
+                "is_archived": false,
+                "is_default": false
+            }
+        },
+        {
+            "id": "8ead8fc12a804eb198c2196abbf1a18e",
+            "type": "members",
+            "attributes": {
+                "nickname": "GaoYu",
+                "is_active": true,
+                "gavatar": "https://avatar.tower.im/",
+                "role": "owner",
+                "comment": null,
+                "phone": null,
+                "created_at": "2018-04-16T16:07:35.000+08:00",
+                "updated_at": "2018-04-16T16:07:35.000+08:00"
+            },
+            "relationships": {
+                "team": {
+                    "data": {
+                        "id": "3fbe491eef5c4fbeaaabc1716b7a1f00",
+                        "type": "teams"
+                    }
+                },
+                "groups": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "id": "3fbe491eef5c4fbeaaabc1716b7a1f00",
+            "type": "teams",
+            "attributes": {
+                "name": "API Team",
+                "created_at": "2018-04-16T16:07:34.000+08:00",
+                "updated_at": "2018-04-16T16:07:35.000+08:00"
+            }
+        },
+        {
+            "id": "66c2977494fd4dadb3ec8cd3248744bf",
+            "type": "todos_check_items",
+            "attributes": {
+                "name": "检查项",
+                "is_completed": false,
+                "due_at": null,
+                "completed_at": null
+            },
+            "relationships": {
+                "creator": {
+                    "data": {
+                        "id": "8ead8fc12a804eb198c2196abbf1a18e",
+                        "type": "members"
+                    }
+                },
+                "assignee": {
+                    "data": null
+                },
+                "closer": {
+                    "data": null
+                }
+            }
+        }
+    ],
+    "jsonapi": {
+        "version": "1.0"
+    }
+}
 ```
 
-## Remove assigner
+## 移除任务负责人
 
 ```
 DELETE /todos/{todo_id}/assignment
@@ -184,36 +1046,306 @@ DELETE /todos/{todo_id}/assignment
 Status: 200 OK
 ```
 
-## Set due date
+## 更新任务到期日
 
 ```
 PATCH /todos/{todo_id}/due
 ```
 
-Parameters
+参数
 
-Name|Type|Description|
+名称|类型|描述|
 --|--|--|
-`{ todos_due: { due_at: '2018-01-10' } }`|`json`| member id
+`{ "todos_due": { "due_at": "2018-01-10" } }`|`json`| 不需要设置时区
 
 ```
 Status: 200 OK
+
+{
+    "data": {
+        "id": "2388246f04414e1aa286cd1cdb60a5b3",
+        "type": "todos",
+        "attributes": {
+            "content": "任务名称",
+            "desc": "<p>任务描述</p>",
+            "is_active": true,
+            "is_completed": false,
+            "due_at": null,
+            "closed_at": null,
+            "created_at": "2018-04-16T16:07:54.000+08:00",
+            "updated_at": "2018-04-16T16:08:15.000+08:00"
+        },
+        "relationships": {
+            "project": {
+                "data": {
+                    "id": "5448bef3f013403db51b82d5ba3c473e",
+                    "type": "projects"
+                }
+            },
+            "todolist": {
+                "data": {
+                    "id": "462c6ca5442c4d6394b8bed46480e195",
+                    "type": "todolists"
+                }
+            },
+            "creator": {
+                "data": {
+                    "id": "8ead8fc12a804eb198c2196abbf1a18e",
+                    "type": "members"
+                }
+            },
+            "assignee": {
+                "data": null
+            },
+            "closer": {
+                "data": null
+            },
+            "todos_check_items": {
+                "data": [
+                    {
+                        "id": "66c2977494fd4dadb3ec8cd3248744bf",
+                        "type": "todos_check_items"
+                    }
+                ]
+            },
+            "comments": {
+                "data": []
+            }
+        }
+    },
+    "included": [
+        {
+            "id": "5448bef3f013403db51b82d5ba3c473e",
+            "type": "projects",
+            "attributes": {
+                "name": "Project Name",
+                "is_archived": false
+            }
+        },
+        {
+            "id": "462c6ca5442c4d6394b8bed46480e195",
+            "type": "todolists",
+            "attributes": {
+                "name": "清单名称",
+                "is_active": true,
+                "is_archived": false,
+                "is_default": false
+            }
+        },
+        {
+            "id": "8ead8fc12a804eb198c2196abbf1a18e",
+            "type": "members",
+            "attributes": {
+                "nickname": "GaoYu",
+                "is_active": true,
+                "gavatar": "https://avatar.tower.im/",
+                "role": "owner",
+                "comment": null,
+                "phone": null,
+                "created_at": "2018-04-16T16:07:35.000+08:00",
+                "updated_at": "2018-04-16T16:07:35.000+08:00"
+            },
+            "relationships": {
+                "team": {
+                    "data": {
+                        "id": "3fbe491eef5c4fbeaaabc1716b7a1f00",
+                        "type": "teams"
+                    }
+                },
+                "groups": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "id": "3fbe491eef5c4fbeaaabc1716b7a1f00",
+            "type": "teams",
+            "attributes": {
+                "name": "API Team",
+                "created_at": "2018-04-16T16:07:34.000+08:00",
+                "updated_at": "2018-04-16T16:07:35.000+08:00"
+            }
+        },
+        {
+            "id": "66c2977494fd4dadb3ec8cd3248744bf",
+            "type": "todos_check_items",
+            "attributes": {
+                "name": "检查项",
+                "is_completed": false,
+                "due_at": null,
+                "completed_at": null
+            },
+            "relationships": {
+                "creator": {
+                    "data": {
+                        "id": "8ead8fc12a804eb198c2196abbf1a18e",
+                        "type": "members"
+                    }
+                },
+                "assignee": {
+                    "data": null
+                },
+                "closer": {
+                    "data": null
+                }
+            }
+        }
+    ],
+    "jsonapi": {
+        "version": "1.0"
+    }
+}
 ```
 
-## Set todo description
+## 更新任务描述
 
 ```
 PATCH /todos/{todo_id}/desc
 ```
 
-Parameters
+参数
 
-Name|Type|Description|
+名称|类型|描述|
 --|--|--|
-`{ todos_desc: { desc: 'Todo Desc' } }`|`json`| member id
+`{ "todos_desc": { "desc": "Todo Desc" } }`|`json`| 
 
 ```
 Status: 200 OK
+
+{
+    "data": {
+        "id": "2388246f04414e1aa286cd1cdb60a5b3",
+        "type": "todos",
+        "attributes": {
+            "content": "任务名称",
+            "desc": "<p>任务描述</p>",
+            "is_active": true,
+            "is_completed": false,
+            "due_at": null,
+            "closed_at": null,
+            "created_at": "2018-04-16T16:07:54.000+08:00",
+            "updated_at": "2018-04-16T16:08:15.000+08:00"
+        },
+        "relationships": {
+            "project": {
+                "data": {
+                    "id": "5448bef3f013403db51b82d5ba3c473e",
+                    "type": "projects"
+                }
+            },
+            "todolist": {
+                "data": {
+                    "id": "462c6ca5442c4d6394b8bed46480e195",
+                    "type": "todolists"
+                }
+            },
+            "creator": {
+                "data": {
+                    "id": "8ead8fc12a804eb198c2196abbf1a18e",
+                    "type": "members"
+                }
+            },
+            "assignee": {
+                "data": null
+            },
+            "closer": {
+                "data": null
+            },
+            "todos_check_items": {
+                "data": [
+                    {
+                        "id": "66c2977494fd4dadb3ec8cd3248744bf",
+                        "type": "todos_check_items"
+                    }
+                ]
+            },
+            "comments": {
+                "data": []
+            }
+        }
+    },
+    "included": [
+        {
+            "id": "5448bef3f013403db51b82d5ba3c473e",
+            "type": "projects",
+            "attributes": {
+                "name": "Project Name",
+                "is_archived": false
+            }
+        },
+        {
+            "id": "462c6ca5442c4d6394b8bed46480e195",
+            "type": "todolists",
+            "attributes": {
+                "name": "清单名称",
+                "is_active": true,
+                "is_archived": false,
+                "is_default": false
+            }
+        },
+        {
+            "id": "8ead8fc12a804eb198c2196abbf1a18e",
+            "type": "members",
+            "attributes": {
+                "nickname": "GaoYu",
+                "is_active": true,
+                "gavatar": "https://avatar.tower.im/",
+                "role": "owner",
+                "comment": null,
+                "phone": null,
+                "created_at": "2018-04-16T16:07:35.000+08:00",
+                "updated_at": "2018-04-16T16:07:35.000+08:00"
+            },
+            "relationships": {
+                "team": {
+                    "data": {
+                        "id": "3fbe491eef5c4fbeaaabc1716b7a1f00",
+                        "type": "teams"
+                    }
+                },
+                "groups": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "id": "3fbe491eef5c4fbeaaabc1716b7a1f00",
+            "type": "teams",
+            "attributes": {
+                "name": "API Team",
+                "created_at": "2018-04-16T16:07:34.000+08:00",
+                "updated_at": "2018-04-16T16:07:35.000+08:00"
+            }
+        },
+        {
+            "id": "66c2977494fd4dadb3ec8cd3248744bf",
+            "type": "todos_check_items",
+            "attributes": {
+                "name": "检查项",
+                "is_completed": false,
+                "due_at": null,
+                "completed_at": null
+            },
+            "relationships": {
+                "creator": {
+                    "data": {
+                        "id": "8ead8fc12a804eb198c2196abbf1a18e",
+                        "type": "members"
+                    }
+                },
+                "assignee": {
+                    "data": null
+                },
+                "closer": {
+                    "data": null
+                }
+            }
+        }
+    ],
+    "jsonapi": {
+        "version": "1.0"
+    }
+}
 ```
 
 
