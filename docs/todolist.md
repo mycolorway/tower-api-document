@@ -319,7 +319,7 @@ Status: 200 OK
 }
 ```
 
-## Update todolist
+## 更新任务列表
 
 ```
 PATCH /todolists/{id}
