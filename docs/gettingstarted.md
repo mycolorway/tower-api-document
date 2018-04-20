@@ -19,9 +19,36 @@ Tower API 文档部署在 [GitHub Page](https://github.com/mycolorway/tower-api-
 4. 输入名称和回调地址，Scopes 可以留空。
 5. 创建成功后，可以看到多出来的**应用 ID**和**私钥**，他们就是后面提到的 `client_id` 和 `client_sercet`。
 
-> 回调地址测试时可以使用 `urn:ietf:wg:oauth:2.0:oob`，切勿用在生产环境中，开发者应该设置自己的回调地址，例如 `https://www.example.com/oauth2/callback`，稍后可以看到回调地址的具体作用。
+> 回调地址测试时可以使用 `urn:ietf:wg:oauth:2.0:oob`，开发者应该设置自己的回调地址，例如 `https://www.example.com/oauth2/callback`，稍后可以看到回调地址的具体作用。
 
 ![](media/15239453924931.jpg)
+
+
+- 尝试第一次授权
+
+> 推荐使用 [Postman](https://www.getpostman.com/apps) 进行尝试
+
+1. 自动授权
+
+准备工作：
+
+- 需要将 `https://www.getpostman.com/oauth2/callback` 添加到创建应用时候的回调地址中。
+
+开始配置：
+
+![](media/15241915999024.jpg)
+
+![](media/15241917353538.jpg)
+
+在填写完 `Client ID` 和 `Client Secret` 及其他相关信息后，点击 `Request Token` 按照提示流程，就可以完成整个授权流程。
+
+
+- 发送第一个请求
+
+> 通过前面的步骤拿到了 Access Token
+
+![](media/15241931645563.jpg)
+
 
 ## OAuth 示例
 
