@@ -185,6 +185,10 @@ Java：
 
 * [moshi-jsonapi](https://github.com/kamikat/moshi-jsonapi)
 
+iOS:
+
+* [Japx](https://github.com/infinum/Japx)
+
 ### API 示例
 
 获取当前用户在团队中的信息
