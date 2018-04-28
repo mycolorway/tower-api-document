@@ -59,27 +59,27 @@ Tower API 文档部署在 [GitHub Page](https://github.com/mycolorway/tower-api-
 
 更多关于 OAuth2.0 的信息可以在[这里](http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)查看和了解。
 
-#### 生成 Access Token
+#### 获取 Access Token
 
-- 客户端：
+1. 浏览器访问 `Tower` 授权地址
 
+    ```
+    https://tower.im/oauth/authorize?client_id={client_id}&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code
+    ```
 
-1. 当用户点击登录时候，弹出浏览器窗口访问 
-```
-https://tower.im/oauth/authorize?client_id={client_id}&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code
-```
->注意，在这里没有替换 redirect_uri，开发者在使用中一定要记得替换。
+    > 注意，在这里没有替换 redirect_uri，开发者在使用中一定要记得替换。
 
 2. 授权完成后，会调用回调地址，此时需要截取浏览器中的重定向，获取回调携带的授权码。
->例如你的回调地址是`https://www.example.com/oauth2/callback`，在授权成功后会调用`https://www.example.com/oauth2/callback?code=authorizationcode`
+    
+    > 例如你的回调地址是`https://www.example.com/oauth2/callback`，在授权成功后会调用`https://www.example.com/oauth2/callback?code=authorizationcode`
 
-3. 拿到授权码后
+3. 拿到授权码后，获取 `Token`
 
-```
-POST https://tower.im/oauth/token
-```
-
-参数
+    ```
+    POST https://tower.im/oauth/token
+    ```
+    
+    参数
 
 名称|类型|描述|
 --|--|--|
@@ -89,7 +89,46 @@ POST https://tower.im/oauth/token
 `grant_type`|`string`| 此处填写为 `authorization_code`
 `redirect_uri`|`string`| 一定要和之前填写的回调地址相同
 
-4. 使用 Tower API 🎉。
+```json
+Status: 200 OK
+
+{
+    "access_token": "d4e949df783404f22e882430158f3b0440b608709d833f9b981e9a96b850f05c",
+    "token_type": "bearer",
+    "expires_in": 7199,
+    "refresh_token": "c426d5ab6a211310df088c77b36b38592f6752d5238f291b79174d93f7dc2ed5",
+    "created_at": 1523420694,
+    "email": "tower@tower.im"
+}
+```
+
+* *两步认证*
+
+如果授权账户开启了两步认证的话，在获取 `Token` 的时候，会自动给用户发送验证码，并同时返回：
+
+```json
+Status: 200 OK
+
+{
+    "error": "otp_required",
+    "error_description": "",
+}
+```
+
+`error` = `otp_required` 就代表是需要两步认证，此时附带上验证码，再次发起获取 `Token` 请求即可。
+
+```
+POST https://tower.im/oauth/token
+```
+
+名称|类型|描述|
+--|--|--|
+`client_id`|`string`| 应用 ID
+`client_secret`|`string`| 私钥
+`code`|`string`| 客户端传来的 `Authorization Code`
+`captcha`|`string`| 两步认证的验证码
+`grant_type`|`string`| 此处填写为 `authorization_code`
+`redirect_uri`|`string`| 一定要和之前填写的回调地址相同
 
 
 #### 刷新 Access Token
@@ -106,8 +145,7 @@ Headers
 --|--|--|
 `Authorization`|`string`| 此处应该填写为 Bearer + access token，例如：`Bearer d4e949df783404f22e882430158f3b0440b608709d833f9b981e9a96b850f05c`
 
-
-Parameters
+参数
 
 名称|类型|描述|
 --|--|--|
