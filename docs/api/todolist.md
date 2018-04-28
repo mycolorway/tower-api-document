@@ -127,9 +127,9 @@ POST /projects/{project_id}/todolists
 
 参数
 
-名称|类型|描述|
---|--|--|
-`{ "todolist": { "name": "Todolist", "desc": "Todolist Desc" } }`|`json`| todolist info
+| 名称                                                              | 类型   | 描述          |
+| ----------------------------------------------------------------- | ------ | ------------- |
+| `{ "todolist": { "name": "Todolist", "desc": "Todolist Desc" } }` | `json` | todolist info |
 
 ```json
 Status: 200 OK
@@ -327,9 +327,9 @@ PATCH /todolists/{id}
 
 参数
 
-名称|类型|描述|
---|--|--|
-`{ "todolist": { "name": "Todolist", "desc": "Todolist Desc" } }`|`json`| todolist info
+| 名称                                                              | 类型   | 描述          |
+| ----------------------------------------------------------------- | ------ | ------------- |
+| `{ "todolist": { "name": "Todolist", "desc": "Todolist Desc" } }` | `json` | todolist info |
 
 ```
 Status: 200 OK
@@ -431,5 +431,3 @@ DELETE /todolists/{id}
 ```
 Status: 204 OK
 ```
-
-

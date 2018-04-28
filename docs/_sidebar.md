@@ -1,9 +1,8 @@
-* [文档说明](gettingstarted.md)
+* [入门](/)
 * API
-  * [用户](user.md)
-  * [团队](team.md)
-  * [成员](member.md)
-  * [项目](project.md)
-  * [任务清单](todolist.md)
-  * [任务](todo.md)
-
+  * [用户](api/user.md)
+  * [团队](api/team.md)
+  * [成员](api/member.md)
+  * [项目](api/project.md)
+  * [任务清单](api/todolist.md)
+  * [任务](api/todo.md)

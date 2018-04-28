@@ -119,8 +119,9 @@ Status: 200 OK
 ## 获取指派给成员未完成任务
 
 ```
-GET /members/{member_id}/assigned_uncompleted_todos	
+GET /members/{member_id}/assigned_uncompleted_todos
 ```
+
 > box 为分类属性，不要使用到期日作为分类。
 > `0`代表新任务，`1`代表今天，`2`代表接下来，`3`代表以后
 
@@ -131,14 +132,14 @@ Status: 200 OK
 ## 获取指派给成员已完成任务
 
 ```
-GET /members/{member_id}/assigned_completed_todos	
+GET /members/{member_id}/assigned_completed_todos
 ```
 
 参数
 
-名称|类型|描述|
---|--|--|
-`{ page: { number: 1 } }`|URLEncoding| page 从 1 开始计数
+| 名称                      | 类型        | 描述               |
+| ------------------------- | ----------- | ------------------ |
+| `{ page: { number: 1 } }` | URLEncoding | page 从 1 开始计数 |
 
 ```
 Status: 200 OK
@@ -147,7 +148,7 @@ Status: 200 OK
 ## 获取成员创建的未完成任务
 
 ```
-GET /members/{member_id}/created_uncompleted_todos	
+GET /members/{member_id}/created_uncompleted_todos
 ```
 
 ```
@@ -157,16 +158,15 @@ Status: 200 OK
 ## 获取成员创建的已完成任务
 
 ```
-GET /members/{member_id}/created_completed_todos	
+GET /members/{member_id}/created_completed_todos
 ```
 
 参数
 
-名称|类型|描述|
---|--|--|
-`{ page: { number: 1 } }`|URLEncoding| page 从 1 开始计数
+| 名称                      | 类型        | 描述               |
+| ------------------------- | ----------- | ------------------ |
+| `{ page: { number: 1 } }` | URLEncoding | page 从 1 开始计数 |
 
 ```
 Status: 200 OK
 ```
-

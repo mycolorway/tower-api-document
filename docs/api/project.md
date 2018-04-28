@@ -3,7 +3,7 @@
 ## 获取团队中所有项目
 
 ```
-GET /teams/{team_id}/projects	
+GET /teams/{team_id}/projects
 ```
 
 ```json
@@ -41,9 +41,9 @@ POST /teams/{team_id}/projects
 
 参数
 
-名称|类型|描述|
---|--|--|
-`{ "project": { "name": "Project", "desc": "Project Desc", "member_ids": [] } }`|`json`| 项目信息
+| 名称                                                                             | 类型   | 描述     |
+| -------------------------------------------------------------------------------- | ------ | -------- |
+| `{ "project": { "name": "Project", "desc": "Project Desc", "member_ids": [] } }` | `json` | 项目信息 |
 
 ```json
 Status: 200 OK
@@ -276,7 +276,7 @@ Status: 200 OK
 ## 更新项目信息
 
 ```
-PATCH	/projects/{id}	
+PATCH	/projects/{id}
 ```
 
 参数
@@ -353,5 +353,3 @@ Status: 200 OK
     }
 }
 ```
-
-

@@ -5,7 +5,8 @@
 ```
 GET /todolists/{todolist_id}/todos
 ```
->仅获得未完成的任务，且没有被归档的
+
+> 仅获得未完成的任务，且没有被归档的
 
 ```json
 Status: 200 OK
@@ -101,9 +102,9 @@ POST /todolists/{todolist_id}/todos
 
 参数
 
-名称|类型|描述|
---|--|--|
-`{ "todo": { "content": "Todo", "desc": "Todo Desc", "assignee_id": "", "due_at": "2018-01-09" } }`|`json`| 任务信息，`assignee_id` 和 `due_at` 可设置为空
+| 名称                                                                                                | 类型   | 描述                                           |
+| --------------------------------------------------------------------------------------------------- | ------ | ---------------------------------------------- |
+| `{ "todo": { "content": "Todo", "desc": "Todo Desc", "assignee_id": "", "due_at": "2018-01-09" } }` | `json` | 任务信息，`assignee_id` 和 `due_at` 可设置为空 |
 
 ```json
 Status: 200 OK
@@ -368,10 +369,9 @@ PATCH /todos/{todo_id}
 
 参数
 
-名称|类型|描述|
---|--|--|
-`{ "todo": { "content": "Todo", "desc": "Todo Desc", "assignee_id": "", "due_at": "2018-01-09" } }`|`json`| 任务信息，`assignee_id` 和 `due_at` 可设置为空
-
+| 名称                                                                                                | 类型   | 描述                                           |
+| --------------------------------------------------------------------------------------------------- | ------ | ---------------------------------------------- |
+| `{ "todo": { "content": "Todo", "desc": "Todo Desc", "assignee_id": "", "due_at": "2018-01-09" } }` | `json` | 任务信息，`assignee_id` 和 `due_at` 可设置为空 |
 
 ```json
 Status: 200 OK
@@ -820,10 +820,10 @@ POST /todos/{id}/comments
 
 参数
 
-名称|类型|描述|
---|--|--|
-`id`|`string`|todo id
-`{"todos_comment": {"content": "comment content"}}`|`json`|comment
+| 名称                                                | 类型     | 描述    |
+| --------------------------------------------------- | -------- | ------- |
+| `id`                                                | `string` | todo id |
+| `{"todos_comment": {"content": "comment content"}}` | `json`   | comment |
 
 > 评论中 @ 他人，需要将评论中的`@Tower`转化成`<a href=\"/members/{member_id}\" data-mention=\"true\">@Tower</a>`
 
@@ -893,9 +893,9 @@ PATCH /todos/{todo_id}/assignment
 
 参数
 
-名称|类型|描述|
---|--|--|
-`{ "todos_assignment": { "assignee_id": "member_id" } }`|`json`| member id
+| 名称                                                     | 类型   | 描述      |
+| -------------------------------------------------------- | ------ | --------- |
+| `{ "todos_assignment": { "assignee_id": "member_id" } }` | `json` | member id |
 
 ```
 Status: 200 OK
@@ -1054,9 +1054,9 @@ PATCH /todos/{todo_id}/due
 
 参数
 
-名称|类型|描述|
---|--|--|
-`{ "todos_due": { "due_at": "2018-01-10" } }`|`json`| 不需要设置时区
+| 名称                                          | 类型   | 描述           |
+| --------------------------------------------- | ------ | -------------- |
+| `{ "todos_due": { "due_at": "2018-01-10" } }` | `json` | 不需要设置时区 |
 
 ```
 Status: 200 OK
@@ -1205,9 +1205,9 @@ PATCH /todos/{todo_id}/desc
 
 参数
 
-名称|类型|描述|
---|--|--|
-`{ "todos_desc": { "desc": "Todo Desc" } }`|`json`| 
+| 名称                                        | 类型   | 描述 |
+| ------------------------------------------- | ------ | ---- |
+| `{ "todos_desc": { "desc": "Todo Desc" } }` | `json` |
 
 ```
 Status: 200 OK
@@ -1347,5 +1347,3 @@ Status: 200 OK
     }
 }
 ```
-
-

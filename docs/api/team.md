@@ -62,9 +62,9 @@ POST /teams
 
 参数
 
-名称|类型|描述|
---|--|--|
-`{ "team": { "name": "Tower Team" } }`|`json`| team name
+| 名称                                   | 类型   | 描述      |
+| -------------------------------------- | ------ | --------- |
+| `{ "team": { "name": "Tower Team" } }` | `json` | team name |
 
 ```json
 Status: 200 OK
@@ -93,9 +93,9 @@ PATCH /teams/{id}
 
 参数
 
-名称|类型|描述|
---|--|--|
-`{ team: { name: 'Tower Team 2' } }`|`json`| team name
+| 名称                                 | 类型   | 描述      |
+| ------------------------------------ | ------ | --------- |
+| `{ team: { name: 'Tower Team 2' } }` | `json` | team name |
 
 ```
 Status: 200 OK
@@ -115,4 +115,3 @@ Status: 200 OK
     }
 }
 ```
-

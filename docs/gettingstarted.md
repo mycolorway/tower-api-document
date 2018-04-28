@@ -49,10 +49,17 @@ Tower API 文档部署在 [GitHub Page](https://github.com/mycolorway/tower-api-
 
 ![](media/15241931645563.jpg)
 
+## 开发
 
-## OAuth 示例
+### OAuth 认证
 
-### 生成 Access Token
+`Tower API` 使用 OAuth2.0 进行认证，`Access Token` 是全局唯一接口调用凭据，开发者调用各接口时都需使用 `Access Token`，请妥善保存。`Access Token` 的有效期目前为 2 个小时，需定时刷新，重复获取将导致上次获取的 `Access Token` 失效。
+
+您在获取后，将 `Access Token` 添加到 API 的 Headers 中，从而确保能够获得正确的数据。
+
+更多关于 OAuth2.0 的信息可以在[这里](http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)查看和了解。
+
+#### 生成 Access Token
 
 - 客户端：
 
@@ -85,7 +92,7 @@ POST https://tower.im/oauth/token
 4. 使用 Tower API 🎉。
 
 
-### 刷新 Access Token
+#### 刷新 Access Token
 
 每一个 Token 默认在 2 小时后到期，此时需要用户进行刷新，同时您也需要注意 API 返回的 `expires_in` 数据，确保代码对过期时间改变后能够自动做出应对。
 
@@ -120,23 +127,27 @@ Status: 200 OK
 }
 ```
 
-
-## 开发
+### BaseUrl
 
 Tower API 的网址为:
 
 ```
 https://tower.im/api/v1
-``` 
+```
 
-API 使用 OAuth2.0 进行认证，`Access Token` 是全局唯一接口调用凭据，开发者调用各接口时都需使用 `Access Token`，请妥善保存。`Access Token` 的有效期目前为2个小时，需定时刷新，重复获取将导致上次获取的 `Access Token` 失效。
+### JSON API
 
-您在获取后，将 `Access Token` 添加到 API 的 Headers 中，从而确保能够获得正确的数据。
+`Tower API` 使用的是 `JSON-API`，它是一种使用 `JSON` 构建 `API` 的规范，可以在不影响可读性、灵活性或可发现性的情况下最大限度地减少请求数量以及客户端和服务器之间传输的数据量。
 
-更多关于 OAuth2.0 的信息可以在[这里](http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)查看和了解。
+相关文档参阅：[Latest Specification (v1.0)](http://jsonapi.org/format/)
 
+---
 
-## API 示例
+Java：
+
+* [moshi-jsonapi](https://github.com/kamikat/moshi-jsonapi)
+
+### API 示例
 
 获取当前用户在团队中的信息
 
@@ -161,4 +172,3 @@ Headers
 
 ### 流程
 ![OAuthToken](media/OAuthToken-2.png)
-
