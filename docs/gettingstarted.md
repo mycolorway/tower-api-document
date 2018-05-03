@@ -1,5 +1,5 @@
-<center><img src="media/TowerLogo.png"></center>
 <br>
+<center><img src="media/logo-apidocs@2x.png"></center>
 <br>
 
 # 文档说明
@@ -214,3 +214,5 @@ Headers
 
 ### 流程
 ![OAuthToken](media/OAuthToken-2.png)
+
+

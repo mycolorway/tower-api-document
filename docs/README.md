@@ -1,8 +1,7 @@
-# <br>
+<br>
+<center><img src="media/logo-apidocs@2x.png"></center>
+<br>
 
-<center><img src="media/TowerLogo.png"></center>
-<br>
-<br>
 
 # 文档说明
 
