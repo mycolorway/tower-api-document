@@ -1,5 +1,4 @@
-<br>
-<center><img src="media/logo-apidocs@2x.png" style="width:550px; height:100px;"></center>
+<center><img src="media/logo-apidocs@2x.png" style="width:550px;"></center>
 <br>
 
 
