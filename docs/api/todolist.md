@@ -3,7 +3,7 @@
 ## 获取项目中所有任务清单
 
 ```
-GET /projects/{project_id}/todolist
+GET /projects/{project_id}/todolists
 ```
 
 ```json

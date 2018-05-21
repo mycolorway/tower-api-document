@@ -109,7 +109,7 @@ Status: 200 OK
 ## 获取成员信息
 
 ```
-GET /member/{member_id}
+GET /members/{member_id}
 ```
 
 ```
