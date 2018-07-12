@@ -3,7 +3,7 @@
 ## 获取清单中所有任务
 
 ```
-GET /todolists/{todolist_id}/todos
+GET https://tower.im/api/v1/todolists/{todolist_id}/todos
 ```
 
 > 仅获得未完成的任务，且没有被归档的
@@ -97,7 +97,7 @@ Status: 200 OK
 ## 创建任务
 
 ```
-POST /todolists/{todolist_id}/todos
+POST https://tower.im/api/v1/todolists/{todolist_id}/todos
 ```
 
 参数
@@ -219,7 +219,7 @@ Status: 200 OK
 ## 获取任务信息
 
 ```
-GET /todos/{todo_id}
+GET https://tower.im/api/v1/todos/{todo_id}
 ```
 
 ```json
@@ -364,7 +364,7 @@ Status: 200 OK
 ## 更新任务信息
 
 ```
-PATCH /todos/{todo_id}
+PATCH https://tower.im/api/v1/todos/{todo_id}
 ```
 
 参数
@@ -525,7 +525,7 @@ Status: 204 OK
 ## 完成任务
 
 ```
-POST /todos/{todo_id}/completion
+POST https://tower.im/api/v1/todos/{todo_id}/completion
 ```
 
 ```json
@@ -670,7 +670,7 @@ Status: 200 OK
 ## 打开任务
 
 ```
-DELETE /todos/{todo_id}/completion
+DELETE https://tower.im/api/v1/todos/{todo_id}/completion
 ```
 
 ```json
@@ -815,7 +815,7 @@ Status: 200 OK
 ## 发布评论
 
 ```
-POST /todos/{id}/comments
+POST https://tower.im/api/v1/todos/{id}/comments
 ```
 
 参数
@@ -888,7 +888,7 @@ Status: 200 OK
 ## 指派任务负责人
 
 ```
-PATCH /todos/{todo_id}/assignment
+PATCH https://tower.im/api/v1/todos/{todo_id}/assignment
 ```
 
 参数
@@ -1039,7 +1039,7 @@ Status: 200 OK
 ## 移除任务负责人
 
 ```
-DELETE /todos/{todo_id}/assignment
+DELETE https://tower.im/api/v1/todos/{todo_id}/assignment
 ```
 
 ```
@@ -1049,7 +1049,7 @@ Status: 200 OK
 ## 更新任务到期日
 
 ```
-PATCH /todos/{todo_id}/due
+PATCH https://tower.im/api/v1/todos/{todo_id}/due
 ```
 
 参数
@@ -1200,7 +1200,7 @@ Status: 200 OK
 ## 更新任务描述
 
 ```
-PATCH /todos/{todo_id}/desc
+PATCH https://tower.im/api/v1/todos/{todo_id}/desc
 ```
 
 参数
@@ -1347,3 +1347,5 @@ Status: 200 OK
     }
 }
 ```
+
+

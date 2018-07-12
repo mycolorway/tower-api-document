@@ -3,7 +3,7 @@
 ## 获取团队中所有项目
 
 ```
-GET /teams/{team_id}/projects
+GET https://tower.im/api/v1/teams/{team_id}/projects
 ```
 
 ```json
@@ -36,7 +36,7 @@ Status: 200 OK
 ## 创建项目
 
 ```
-POST /teams/{team_id}/projects
+POST https://tower.im/api/v1/teams/{team_id}/projects
 ```
 
 参数
@@ -122,7 +122,7 @@ Status: 200 OK
 ## 获取项目信息
 
 ```
-GET /projects/{project_id}
+GET https://tower.im/api/v1/projects/{project_id}
 ```
 
 ```json
@@ -276,7 +276,7 @@ Status: 200 OK
 ## 更新项目信息
 
 ```
-PATCH	/projects/{id}
+PATCH	https://tower.im/api/v1/projects/{id}
 ```
 
 参数
@@ -292,7 +292,7 @@ Status: 200 OK
 ## 删除项目
 
 ```
-DELETE /projects/{id}
+DELETE https://tower.im/api/v1/projects/{id}
 ```
 
 ```
@@ -302,7 +302,7 @@ Status: 204 OK
 ## 获取项目成员
 
 ```
-GET /projects/{project_id}/members
+GET https://tower.im/api/v1/projects/{project_id}/members
 ```
 
 参数
@@ -365,3 +365,5 @@ Status: 200 OK
     }
 }
 ```
+
+

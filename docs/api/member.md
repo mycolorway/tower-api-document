@@ -3,7 +3,7 @@
 ## 获取团队全部成员
 
 ```
-GET /teams/{team_id}/members
+GET https://tower.im/api/v1/teams/{team_id}/members
 ```
 
 参数
@@ -70,7 +70,7 @@ Status: 200 OK
 ## 获取当前账户在团队中的信息
 
 ```
-GET /teams/{team_id}/member
+GET https://tower.im/api/v1/teams/{team_id}/member
 ```
 
 ```
@@ -122,7 +122,7 @@ Status: 200 OK
 ## 获取成员信息
 
 ```
-GET /members/{member_id}
+GET https://tower.im/api/v1/members/{member_id}
 ```
 
 ```
@@ -145,7 +145,7 @@ Status: 200 OK
 ## 获取指派给成员已完成任务
 
 ```
-GET /members/{member_id}/assigned_completed_todos
+GET https://tower.im/api/v1/members/{member_id}/assigned_completed_todos
 ```
 
 参数
@@ -161,7 +161,7 @@ Status: 200 OK
 ## 获取成员创建的未完成任务
 
 ```
-GET /members/{member_id}/created_uncompleted_todos
+GET https://tower.im/api/v1/members/{member_id}/created_uncompleted_todos
 ```
 
 ```
@@ -171,7 +171,7 @@ Status: 200 OK
 ## 获取成员创建的已完成任务
 
 ```
-GET /members/{member_id}/created_completed_todos
+GET https://tower.im/api/v1/members/{member_id}/created_completed_todos
 ```
 
 参数
@@ -183,3 +183,5 @@ GET /members/{member_id}/created_completed_todos
 ```
 Status: 200 OK
 ```
+
+

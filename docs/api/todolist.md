@@ -3,7 +3,7 @@
 ## 获取项目中所有任务清单
 
 ```
-GET /projects/{project_id}/todolists
+GET https://tower.im/api/v1/projects/{project_id}/todolists
 ```
 
 ```json
@@ -122,7 +122,7 @@ Status: 200 OK
 ## 创建任务清单
 
 ```
-POST /projects/{project_id}/todolists
+POST https://tower.im/api/v1/projects/{project_id}/todolists
 ```
 
 参数
@@ -225,7 +225,7 @@ Status: 200 OK
 ## 获取任务清单信息
 
 ```
-GET /todolists/{id}
+GET https://tower.im/api/v1/todolists/{id}
 ```
 
 ```json
@@ -322,7 +322,7 @@ Status: 200 OK
 ## 更新任务列表
 
 ```
-PATCH /todolists/{id}
+PATCH https://tower.im/api/v1/todolists/{id}
 ```
 
 参数
@@ -425,9 +425,11 @@ Status: 200 OK
 ## 删除任务清单
 
 ```
-DELETE /todolists/{id}
+DELETE https://tower.im/api/v1/todolists/{id}
 ```
 
 ```
 Status: 204 OK
 ```
+
+

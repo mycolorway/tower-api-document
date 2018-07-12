@@ -3,7 +3,7 @@
 ## 获取加入的团队列表
 
 ```
-GET /teams
+GET https://tower.im/api/v1/teams
 ```
 
 ```json
@@ -57,7 +57,7 @@ Status: 200 OK
 ## 创建团队
 
 ```
-POST /teams
+POST https://tower.im/api/v1/teams
 ```
 
 参数
@@ -88,7 +88,7 @@ Status: 200 OK
 ## 更改团队名称
 
 ```
-PATCH /teams/{id}
+PATCH https://tower.im/api/v1/teams/{id}
 ```
 
 参数
@@ -115,3 +115,5 @@ Status: 200 OK
     }
 }
 ```
+
+
