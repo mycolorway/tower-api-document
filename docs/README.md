@@ -46,6 +46,8 @@ Tower API 文档部署在 [GitHub Page](https://github.com/mycolorway/tower-api-
 - 发送第一个请求
 
 > 通过前面的步骤拿到了 Access Token
+> Key: Authorization
+> Value: Bearer `Access Token`
 
 ![](media/15241931645563.jpg)
 
