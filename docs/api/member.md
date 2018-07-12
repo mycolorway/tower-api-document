@@ -6,6 +6,12 @@
 GET /teams/{team_id}/members
 ```
 
+参数
+
+| 名称                      | 类型        | 描述               |
+| ------------------------- | ----------- | ------------------ |
+| `{ page: { number: 1 } }` | URLEncoding | page 从 1 开始计数 |
+
 ```
 Status: 200 OK
 
@@ -50,6 +56,13 @@ Status: 200 OK
     ],
     "jsonapi": {
         "version": "1.0"
+    },
+    "links": {
+        "self": "https://tower.im/api/v1/teams/:id/members?page%5Bnumber%5D=1&page%5Bsize%5D=200",
+        "first": "https://tower.im/api/v1/teams/:id/members?page%5Bnumber%5D=1&page%5Bsize%5D=200",
+        "prev": null,
+        "next": null,
+        "last": "https://tower.im/api/v1/teams/:id/members?page%5Bnumber%5D=1&page%5Bsize%5D=200"
     }
 }
 ```
