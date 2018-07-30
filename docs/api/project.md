@@ -43,7 +43,7 @@ POST https://tower.im/api/v1/teams/{team_id}/projects
 
 | 名称                                                                             | 类型   | 描述     |
 | -------------------------------------------------------------------------------- | ------ | -------- |
-| `{ "project": { "name": "Project", "desc": "Project Desc", "member_ids": [] } }` | `json` | 项目信息 |
+| `{ "project": { "name": "Project", "desc": "Project Desc", "member_ids": [], "color_id": 0, "icon_id": 0 } }` | `json` | 项目信息 |
 
 ```json
 Status: 200 OK
