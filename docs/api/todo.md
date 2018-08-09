@@ -671,6 +671,8 @@ Status: 200 OK
 
 ```
 DELETE https://tower.im/api/v1/todos/{todo_id}/completion
+
+使用 HTTP 的 Delete 方法，对已完成任务完成进行删除，表示重新打开任务。
 ```
 
 ```json
