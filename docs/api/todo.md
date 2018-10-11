@@ -825,7 +825,7 @@ POST https://tower.im/api/v1/todos/{id}/comments
 | 名称                                                | 类型     | 描述    |
 | --------------------------------------------------- | -------- | ------- |
 | `id`                                                | `string` | todo id |
-| `{"todos_comment": {"content": "comment content"}}` | `json`   | comment |
+| `{"comment": {"content": "comment content"}}` | `json`   | comment |
 
 > 评论中 @ 他人，需要将评论中的`@Tower`转化成`<a href=\"/members/{member_id}\" data-mention=\"true\">@Tower</a>`
 
