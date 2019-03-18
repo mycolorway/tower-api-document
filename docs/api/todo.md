@@ -10,7 +10,7 @@ GET https://tower.im/api/v1/todolists/{todolist_id}/todos
 
 | 名称                      | 类型        | 描述               |
 | ------------------------- | ----------- | ------------------ |
-| `page` | int | 返回页数，默认为：1，每页最多返回 100 条任务 |
+| `{ page: { number: 1 } }` | URLEncoding | page 从 1 开始计数 |
 | `completed_todo` | boolean | 是否包含已完成任务，默认：false |
 
 ```json
