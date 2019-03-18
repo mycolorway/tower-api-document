@@ -1,12 +1,17 @@
 # 任务
 
-## 获取清单中所有任务
+## 获取清单任务
 
 ```
 GET https://tower.im/api/v1/todolists/{todolist_id}/todos
 ```
 
-> 仅获得未完成的任务，且没有被归档的
+参数
+
+| 名称                      | 类型        | 描述               |
+| ------------------------- | ----------- | ------------------ |
+| `{ page: { number: 1 } }` | URLEncoding | page 从 1 开始计数 |
+| `completed_todo` | boolean | 是否包含已完成任务，默认：false |
 
 ```json
 Status: 200 OK
