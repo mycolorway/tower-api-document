@@ -108,8 +108,9 @@ Parameters
 --|--|--|
 `client_id`|`string`| 应用 ID
 `client_secret`|`string`| 私钥
-`grant_type`|`string`| 此处填写为 `authorization_code`
+`grant_type`|`string`| 此处填写为 `refresh_token`
 `redirect_uri`|`string`| 一定要和之前填写的回调地址相同
+`refresh_token`|`string`| refresh_token 的值
 
 ```json
 Status: 200 OK
