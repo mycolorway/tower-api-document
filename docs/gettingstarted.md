@@ -3,7 +3,7 @@
 
 # 文档说明
 
-您可以通过 API 集成 [Tower](https://tower.im) 服务到您的系统中。
+欢迎使用 [Tower](https://tower.im) API。
 
 本文档部署在 [GitHub Page](https://github.com/mycolorway/tower-api-document) 上，对于文中出现的错误我们非常欢迎您进行反馈，您可以创建 issue 或 pull request 进行更正。
 
@@ -69,7 +69,7 @@
     > 注意，在这里没有替换 redirect_uri，开发者在使用中一定要记得替换。
 
 2. 授权完成后，会调用回调地址，此时需要截取浏览器中的重定向，获取回调携带的授权码。
-    
+
     > 例如你的回调地址是`https://www.example.com/oauth2/callback`，在授权成功后会调用`https://www.example.com/oauth2/callback?code=authorizationcode`
 
 3. 拿到授权码后，获取 `Token`
@@ -77,7 +77,7 @@
     ```
     POST https://tower.im/oauth/token
     ```
-    
+
     参数
 
 名称|类型|描述|
