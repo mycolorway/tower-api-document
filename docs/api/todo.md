@@ -269,6 +269,12 @@ Status: 200 OK
             "closer": {
                 "data": null
             },
+            "custom_field_value": {
+                "data": {
+                    "id": "2",
+                    "type": "todos_custom_field_values"
+                }
+            },
             "todos_check_items": {
                 "data": [
                     {
@@ -356,6 +362,53 @@ Status: 200 OK
                 },
                 "closer": {
                     "data": null
+                }
+            }
+        },
+        {
+            "id": "2",
+            "type": "todos_custom_field_values",
+            "attributes": {
+                "custom_fields": {
+                    "number_Y4B7RiMh": {
+                        "name": "任务估点",
+                        "value": "8",
+                        "field_type": "number"
+                    },
+                    "multi_select_QeTbTNAR": {
+                        "name": "所属平台",
+                        "value": [
+                            "微信",
+                            "安卓",
+                            "企业微信"
+                        ],
+                        "field_type": "multi_select"
+                    },
+                    "date_SkFsCU6t": {
+                        "name": "截止日期",
+                        "value": "2019-07-25",
+                        "field_type": "date"
+                    },
+                    "string_i5timka4": {
+                        "name": "备注",
+                        "value": "备注信息",
+                        "field_type": "string"
+                    },
+                    "member_GrB9U8fJ": {
+                        "name": "维护人",
+                        "value": "2a4b425e1f0d663668ce19b94ed3688d",
+                        "field_type": "member"
+                    },
+                    "select_WDvNVBqF": {
+                        "name": "性别",
+                        "value": "男",
+                        "field_type": "select"
+                    },
+                    "boolean_ZFxG2S6U": {
+                        "name": "是否停用",
+                        "value": "true",
+                        "field_type": "boolean"
+                    }
                 }
             }
         }
