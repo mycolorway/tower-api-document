@@ -2,7 +2,12 @@
 * API
   * [用户](api/user.md)
   * [团队](api/team.md)
+  * [通知](api/notification.md)
+  * [动态](api/event.md)
+  * [上传附件](api/direct_upload.md)
   * [成员](api/member.md)
   * [项目](api/project.md)
   * [任务清单](api/todolist.md)
   * [任务](api/todo.md)
+  * [讨论](api/topic.md)
+  * [文件](api/upload.md)
