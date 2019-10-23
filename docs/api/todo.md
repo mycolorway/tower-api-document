@@ -27,7 +27,9 @@ Status: 200 OK
                 "is_active": true,
                 "is_completed": false,
                 "due_at": null,
-                "closed_at": null
+                "closed_at": null,
+                "priority": "higher",
+                "labels": ["缺陷", "v12.32"]
             },
             "relationships": {
                 "creator": {
@@ -98,6 +100,17 @@ Status: 200 OK
     }
 }
 ```
+
+
+`priority` 字段说明：
+
+```
+highest: 最高
+higher: 较高
+normal: 普通
+lower: 较低
+```
+
 
 ## 创建任务
 
