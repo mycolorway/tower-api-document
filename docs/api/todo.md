@@ -122,7 +122,7 @@ POST https://tower.im/api/v1/todolists/{todolist_id}/todos
 
 | 名称                                                                                                | 类型   | 描述                                           |
 | --------------------------------------------------------------------------------------------------- | ------ | ---------------------------------------------- |
-| `{ "todo": { "content": "Todo", "desc": "Todo Desc", "assignee_id": "", "due_at": "2018-01-09" } }` | `json` | 任务信息，`assignee_id` 和 `due_at` 可设置为空 |
+| `{ "todo": { "content": "Todo", "desc": "Todo Desc", "assignee_id": "", "due_at": "2018-01-09", "start_at": "2018-01-01", "attfile_guids": ["guid1", "guid2", "guid3"] } }` | `json` | 任务信息，`assignee_id` 、 `due_at`、`start_at` 可设置为空 |
 
 ```json
 Status: 200 OK
@@ -442,7 +442,7 @@ PATCH https://tower.im/api/v1/todos/{todo_id}
 
 | 名称                                                                                                | 类型   | 描述                                           |
 | --------------------------------------------------------------------------------------------------- | ------ | ---------------------------------------------- |
-| `{ "todo": { "content": "Todo", "desc": "Todo Desc", "assignee_id": "", "due_at": "2018-01-09" } }` | `json` | 任务信息，`assignee_id` 和 `due_at` 可设置为空 |
+| `{ "todo": { "content": "Todo", "desc": "Todo Desc", "assignee_id": "", "due_at": "2018-01-09", "start_at": "2018-01-05", "attfile_guids": ["guid1", "guid2", "guid3"] } }` | `json` | 任务信息，`assignee_id` 和 `due_at` 可设置为空 |
 
 ```json
 Status: 200 OK
