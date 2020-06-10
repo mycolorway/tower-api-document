@@ -10,7 +10,7 @@ GET https://tower.im/api/v1/todolists/{todolist_id}/todos
 
 | 名称                      | 类型        | 描述               |
 | ------------------------- | ----------- | ------------------ |
-| `{ page: { number: 1 } }` | URLEncoding | page 从 1 开始计数 |
+| `{ page: { number: 1 } }` | URLEncoding | page 从 1 开始计数,也可以使用 page[number] = 1 |
 | `completed_todo` | boolean | 是否包含已完成任务，默认：false |
 
 ```json
@@ -22,6 +22,7 @@ Status: 200 OK
             "id": "46d952895c10440",
             "type": "todos",
             "attributes": {
+                "team_wide_id": 4116, //资源ID
                 "content": "任务名称",
                 "desc": "任务描述",
                 "is_active": true,
@@ -248,6 +249,7 @@ Status: 200 OK
         "id": "2388246f04414e1aa286cd1cdb60a5b3",
         "type": "todos",
         "attributes": {
+            "team_wide_id": 4116, //资源ID
             "content": "任务名称",
             "desc": "<p>任务描述</p>",
             "is_active": true,
@@ -452,6 +454,7 @@ Status: 200 OK
         "id": "2388246f04414e1aa286cd1cdb60a5b3",
         "type": "todos",
         "attributes": {
+            "team_wide_id": 4116, //资源ID
             "content": "任务名称",
             "desc": "<p>任务描述</p>",
             "is_active": true,
@@ -607,6 +610,7 @@ Status: 200 OK
         "id": "2388246f04414e1aa286cd1cdb60a5b3",
         "type": "todos",
         "attributes": {
+            "team_wide_id": 4116, //资源ID
             "content": "任务名称",
             "desc": "<p>任务描述</p>",
             "is_active": true,
@@ -754,6 +758,7 @@ Status: 200 OK
         "id": "2388246f04414e1aa286cd1cdb60a5b3",
         "type": "todos",
         "attributes": {
+            "team_wide_id": 4116, //资源ID
             "content": "任务名称",
             "desc": "<p>任务描述</p>",
             "is_active": true,
@@ -970,7 +975,7 @@ PATCH https://tower.im/api/v1/todos/{todo_id}/assignment
 | -------------------------------------------------------- | ------ | --------- |
 | `{ "todos_assignment": { "assignee_id": "member_id" } }` | `json` | member id |
 
-```
+```json
 Status: 200 OK
 
 {
@@ -1131,7 +1136,7 @@ PATCH https://tower.im/api/v1/todos/{todo_id}/due
 | --------------------------------------------- | ------ | -------------- |
 | `{ "todos_due": { "due_at": "2018-01-10" } }` | `json` | 不需要设置时区 |
 
-```
+```json
 Status: 200 OK
 
 {
@@ -1139,6 +1144,7 @@ Status: 200 OK
         "id": "2388246f04414e1aa286cd1cdb60a5b3",
         "type": "todos",
         "attributes": {
+            "team_wide_id": 4116, //资源ID
             "content": "任务名称",
             "desc": "<p>任务描述</p>",
             "is_active": true,
@@ -1282,7 +1288,7 @@ PATCH https://tower.im/api/v1/todos/{todo_id}/desc
 | ------------------------------------------- | ------ | ---- |
 | `{ "todos_desc": { "desc": "Todo Desc" } }` | `json` |
 
-```
+```json
 Status: 200 OK
 
 {
@@ -1420,5 +1426,3 @@ Status: 200 OK
     }
 }
 ```
-
-
