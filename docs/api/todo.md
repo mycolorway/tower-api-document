@@ -239,7 +239,13 @@ Status: 200 OK
 
 ```
 GET https://tower.im/api/v1/todos/{todo_id}
+
+或者
+
+GET https://tower.im/api/v1/teams/{team_id}/todos/{team_wide_id}
 ```
+
+
 
 ```json
 Status: 200 OK
@@ -788,6 +794,10 @@ Status: 200 OK
 
 ```
 PATCH https://tower.im/api/v1/todos/{todo_id}
+
+或者
+
+PATCH https://tower.im/api/v1/teams/{team_id}/todos/{team_wide_id}
 ```
 
 参数
@@ -935,7 +945,11 @@ Status: 200 OK
 ## 删除任务
 
 ```
-DELETE /todos/{todo_id}
+DELETE https://tower.im/api/v1/todos/{todo_id}
+
+或者
+
+DELETE https://tower.im/api/v1/teams/{team_id}/todos/{team_wide_id}
 ```
 
 ```
