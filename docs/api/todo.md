@@ -123,7 +123,7 @@ POST https://tower.im/api/v1/todolists/{todolist_id}/todos
 
 | 名称                                                                                                | 类型   | 描述                                           |
 | --------------------------------------------------------------------------------------------------- | ------ | ---------------------------------------------- |
-| `{ "todo": { "content": "Todo", "desc": "Todo Desc", "assignee_id": "", "due_at": "2018-01-09", "start_at": "2018-01-01", "attfile_guids": ["guid1", "guid2", "guid3"] } }` | `json` | 任务信息，`assignee_id` 、 `due_at`、`start_at` 可设置为空 |
+| `{ "todo": { "content": "Todo", "desc": "Todo Desc", "assignee_id": "", "due_at": "2018-01-09", "start_at": "2018-01-01", "attfile_guids": ["guid1", "guid2", "guid3"], "select_C4SJPfKe(示例)": "fcd8170c", "label_ids": [146], "hyperlink_jzXUYBJ6": [{"name": "aaaa", "link": "tower.im"}] } }` | `json` | 任务信息，`assignee_id` 和 `due_at`、`start_at` 可设置为空；更新自定义字段时需传自定义字段的 key，单选、多选字段的可填值为选项对应的 value（可在网页端检查元素里看到）；标签同理，也需要在网页端找到标签对应的 value |
 
 ```json
 Status: 200 OK
@@ -804,7 +804,7 @@ PATCH https://tower.im/api/v1/teams/{team_id}/todos/{team_wide_id}
 
 | 名称                                                                                                | 类型   | 描述                                           |
 | --------------------------------------------------------------------------------------------------- | ------ | ---------------------------------------------- |
-| `{ "todo": { "content": "Todo", "desc": "Todo Desc", "assignee_id": "", "due_at": "2018-01-09", "start_at": "2018-01-05", "attfile_guids": ["guid1", "guid2", "guid3"] }, "select_C4SJPfKe(示例)": "fcd8170c", "label_ids": [146],  "hyperlink_jzXUYBJ6": [{"name": "aaaa", "link": "tower.im"}] }` | `json` | 任务信息，`assignee_id` 和 `due_at` 可设置为空,  更新自定义字段时需传自定义字段的key, 单选,多选字段的可填值为选项对应的value(可在网页端检查元素里看到). 标签同理，也需要在网页端找到标签对应的value|
+| `{ "todo": { "content": "Todo", "desc": "Todo Desc", "assignee_id": "", "due_at": "2018-01-09", "start_at": "2018-01-05", "attfile_guids": ["guid1", "guid2", "guid3"], "select_C4SJPfKe(示例)": "fcd8170c", "label_ids": [146], "hyperlink_jzXUYBJ6": [{"name": "aaaa", "link": "tower.im"}] } }` | `json` | 任务信息，`assignee_id` 和 `due_at` 可设置为空；更新自定义字段时需传自定义字段的 key，单选、多选字段的可填值为选项对应的 value（可在网页端检查元素里看到）；标签同理，也需要在网页端找到标签对应的 value |
 
 ```json
 Status: 200 OK
