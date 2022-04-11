@@ -128,7 +128,7 @@ Status: 200 OK
 ## 创建工时
 
 ```
-POST https://tower.im/api/v1/todos/{todo_id}/todos
+POST https://tower.im/api/v1/todos/{todo_id}/time_logs
 ```
 
 参数
