@@ -3,7 +3,7 @@
 ## 获取项目下所有工时
 
 ```
-GET https://tower.im/api/v1/project/{project_id}/time_logs
+GET https://tower.im/api/v1/projects/{project_id}/time_logs
 ```
 
 参数
