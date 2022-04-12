@@ -11,5 +11,4 @@
   * [任务](api/todo.md)
   * [讨论](api/topic.md)
   * [文件](api/upload.md)
-  * [OSS 文件](api/oss.md)
   * [工时](api/time_log.md)
