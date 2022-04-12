@@ -11,6 +11,11 @@ GET https://tower.im/api/v1/projects/{project_id}/time_logs
 | 名称                      | 类型        | 描述               |
 | ------------------------- | ----------- | ------------------ |
 | `{ page: { number: 1 } }` | URLEncoding | page 从 1 开始计数,也可以使用 page[number] = 1 |
+| creator_id | `string` | 负责人 |
+| starts_at_start | `string` | 开始时间起 |
+| starts_at_end | `string` | 开始时间止 |
+| ends_at_start | `string` | 结束时间起 |
+| ends_at_end | `string` | 结束时间止 |
 
 ```json
 Status: 200 OK
