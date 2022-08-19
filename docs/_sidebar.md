@@ -12,4 +12,3 @@
   * [讨论](api/topic.md)
   * [文件](api/upload.md)
   * [工时](api/time_log.md)
-  * [评论](api/comment.md)
