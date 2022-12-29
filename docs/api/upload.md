@@ -262,6 +262,6 @@ Status: 200 OK
 
 ```json
 {
-  "url": "https://aliossdl1.tower.im/123456/62654e459dcae3184643be699a0ff8a4?Expires=1649587195&OSSAccessKeyId=LTAI4FzdzJ63WYH36wjrvT56&Signature=jcyeTSWOIU%2Fqm4q35ayUq2spLDg%3D&response-content-disposition=inline%3Bfilename%3D%22%E7%9C%BC%E9%95%9C%E7%8C%B4%EF%BC%9B%E5%BF%86%E6%98%94%E5%85%AE%E7%9F%A3++++-3.jpg.jpeg%22&response-content-type=image%2Fjpeg"
+  "url": "https://aliossdl1.tower.im/123456/62654e459dcae3184643be699a0ff8a4xxx"
 }
 ```
