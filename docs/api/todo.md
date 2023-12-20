@@ -1807,3 +1807,92 @@ Status: 200 OK
     }
 }
 ```
+
+
+
+## 查询任务通知成员列表
+```
+GET https://tower.im/api/v1/todos/{todo_id}/cc_members
+```
+
+参数：-
+
+```json
+Status: 200 OK
+
+{
+  "data": [
+    {
+      "id": "0f3ac8f178ce4214b3053ce2275c5c53",
+      "type": "members",
+      "attributes": {
+        "nickname": "Sean",
+        "is_active": true,
+        "gavatar": "https://avatar3.tower.im/000002117f791521e770?t=1702889601",
+        "role": "owner",
+        "comment": null,
+        "mailbox": "tower@mycolorway.com",
+        "phone": "18600000000",
+        "is_incomplete_from_wxwork": false,
+        "is_locked_by_free_team_quota": false
+      },
+      "relationships": {
+        "team": {
+          "data": {
+            "id": "ee4251bdf88a4e82b63b70b587123091",
+            "type": "teams"
+          }
+        },
+        "groups": {
+          "data": [
+            {
+              "id": "5e5fecca46a6a8b95dab174e09af4ad2",
+              "type": "subgroups"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "included": [
+    {
+      "id": "ee4251bdf88a4e82b63b70b587123091",
+      "type": "teams",
+      "attributes": {
+        "name": "🚀 Team Tower",
+        "created_at": "2017-04-17T10:24:44.000+08:00",
+        "updated_at": "2023-12-19T11:21:59.000+08:00"
+      }
+    },
+    {
+      "id": "5e5fecca46a6a8b95dab174e09af4ad2",
+      "type": "subgroups",
+      "attributes": {
+        "name": "技术组",
+        "position": 1
+      }
+    }
+  ],
+  "jsonapi": {
+    "version": "1.0"
+  }
+}
+```
+
+## 更新任务通知成员列表
+
+```
+PATCH https://tower.im/api/v1/todos/{todo_id}/cc_members
+```
+
+参数
+
+| 名称                                        | 类型   | 描述 |
+| ------------------------------------------- | ------ | ---- |
+| `{ "guids": ["成员1 id", "成员2 ID",] }` | `json` |
+
+```json
+Status: 200 OK
+
+返回数据与查询任务通知成员列表一致
+```
