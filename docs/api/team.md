@@ -117,3 +117,34 @@ Status: 200 OK
 ```
 
 
+## 根据团队资源 ID 查询资源信息
+
+```
+GET https://tower.im/api/v1/teams/:team_id/resources/:resource_id
+```
+
+参数
+
+| 名称                                 | 类型   | 描述      |
+| ------------------------------------ | ------ | --------- |
+| team_id | integer | 团队 ID |
+| resource_id | integer | 资源 ID |
+
+```
+
+GET /api/v1/teams/630122/resources/123
+
+Status: 200 OK
+
+{
+  "data": {
+    "id": "30c9ff0087c24c81a58ec8f15a11fbd1",
+    "type": "messages"
+  },
+  "jsonapi": {
+    "version": "1.0"
+  }
+}
+```
+
+
